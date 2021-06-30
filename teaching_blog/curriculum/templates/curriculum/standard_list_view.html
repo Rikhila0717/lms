@@ -1,0 +1,7 @@
+{% extends 'base.html'%}
+
+{% block content%}
+    {% for standard in standards%}
+        {{standard.name}}
+    {% endfor %}
+{% endblock %}
