@@ -10,3 +10,8 @@ class StandardListView(ListView):
     model = Standard
     template_name = 'curriculum/standard_list_view.html'
 
+class SubjectListView(DetailView):
+    context_object_name = 'standards'
+    model = Standard
+    template_name = 'curriculum/subject_list_view.html'
+    
