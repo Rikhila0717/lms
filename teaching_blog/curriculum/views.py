@@ -19,3 +19,9 @@ class LessonListView(DetailView):
     context_object_name = 'subjects'
     model = Subject
     template_name = 'curriculum/lesson_list_view.html'
+
+class LessonDetailView(DetailView):
+    context_object_name = 'lessons'
+    model= Lesson
+    template_name = 'curriculum/lesson_detail_view.html'
+    
