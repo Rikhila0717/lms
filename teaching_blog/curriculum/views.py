@@ -1,8 +1,11 @@
 
+from django.http.response import HttpResponseRedirect
 from django.shortcuts import render
 from django.views.generic import (TemplateView, DetailView, ListView, FormView,CreateView,UpdateView,DeleteView)
 from .models import *
 from . import forms
+from django.urls import reverse_lazy
+
 
 
 
@@ -32,3 +35,23 @@ class LessonCreateView(CreateView):
     context_object_name = 'subject'
     model = Subject
     template_name = 'curriculum/lesson_create.html'
+
+    def get_success_url(self):
+        self.object = self.get_object()
+        standard = self.object.standard
+        return reverse_lazy('curriculum:lesson_list',kwargs={'standard':standard.slug,'slug':self.object.slug})
+
+    def form_valid(self,form,*args, **kwargs):
+        self.object = self.get_object()
+        #data shouldn't be saved yet
+        fm = form.save(commit=False)
+        fm.created_by = self.request.user
+        fm.Standard = self.object.standard
+        fm.subject = self.object
+        fm.save()
+        return HttpResponseRedirect(self.get_success_url())
+
+
+
+# class LessonUpdateView(UpdateView):
+#     fields = ('name','position','video','ppt','Notes')

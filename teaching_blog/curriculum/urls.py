@@ -10,5 +10,6 @@ urlpatterns = [
     path('<str:standard>/<str:slug>/create/',views.LessonCreateView.as_view(),name='lesson_create'),
     path('<str:standard>/<str:subject>/<slug:slug>/',views.LessonDetailView.as_view(),name='lesson_details'),
     
+    
 ]
 
