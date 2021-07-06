@@ -8,4 +8,7 @@
 
 {% endfor %}
 
+<br>
+<a href="{% url 'curriculum:lesson_create' standard=subjects.standard.slug slug=subjects.slug %}">create lesson</a> 
+
 {% endblock %}

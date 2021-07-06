@@ -1,7 +1,9 @@
 
 from django.shortcuts import render
-from django.views.generic import (TemplateView, DetailView, ListView, FormView)
+from django.views.generic import (TemplateView, DetailView, ListView, FormView,CreateView,UpdateView,DeleteView)
 from .models import *
+from . import forms
+
 
 
 # Create your views here.
@@ -25,3 +27,8 @@ class LessonDetailView(DetailView):
     model= Lesson
     template_name = 'curriculum/lesson_detail_view.html'
     
+class LessonCreateView(CreateView):
+    form_class = forms.LessonForm
+    context_object_name = 'subject'
+    model = Subject
+    template_name = 'curriculum/lesson_create.html'
