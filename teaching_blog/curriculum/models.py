@@ -80,4 +80,6 @@ class Lesson(models.Model):
         self.slug = slugify(self.name)
         super().save(*args,**kwargs)
 
+    def get_absolute_url(self):
+        return reverse('', kwargs={"pk": self.pk})
     

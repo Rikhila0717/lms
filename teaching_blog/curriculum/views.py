@@ -53,5 +53,9 @@ class LessonCreateView(CreateView):
 
 
 
-# class LessonUpdateView(UpdateView):
-#     fields = ('name','position','video','ppt','Notes')
+class LessonUpdateView(UpdateView):
+    fields = ('name','position','video','ppt','Notes')
+    model = Lesson
+    template_name= 'curriculum/lesson_update.html'
+    context_object_name= 'lessons'
+    

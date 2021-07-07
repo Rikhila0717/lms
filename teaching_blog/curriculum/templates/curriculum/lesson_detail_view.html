@@ -4,5 +4,7 @@
 {% block content %}
 
 <p> Created on {{lessons.created_at}} by {{lessons.created_by}}</p><br>
+<a href="{% url 'curriculum:lesson_update' standard=lessons.Standard.slug subject=lessons.subject.slug slug=lessons.slug%}">update lesson</a>
+
 
 {% endblock %}
